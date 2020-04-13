@@ -52,10 +52,11 @@ class TestTrappedRainWater(unittest.TestCase):
         Test that the count_trapped_water function returns a list that sums to
         the expected count.
         """
-        for test in self.tests:
-            elevation_map, expected = test['elevation_map'], test['expected']
-            with self.subTest(elevation_map=elevation_map, expected=expected):
-                self.assertEqual(sum(count_trapped_water(elevation_map)), expected)
+        for axis in [0,1]:
+            for test in self.tests:
+                elevation_map, expected = test['elevation_map'], test['expected']
+                with self.subTest(elevation_map=elevation_map, axis=axis, expected=expected):
+                    self.assertEqual(sum(count_trapped_water(elevation_map, axis=axis)), expected)
 
 
 if __name__ == '__main__':
